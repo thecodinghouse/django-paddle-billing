@@ -22,6 +22,7 @@ from django_paddle_billing import settings, signals
 from django_paddle_billing.encoders import PrettyJSONEncoder
 from django_paddle_billing.exceptions import DjangoPaddleBillingError
 from django_paddle_billing.utils import get_account_model
+from ordered_model.models import OrderedModel
 
 logger = logging.getLogger(__name__)
 
@@ -77,14 +78,18 @@ class PaddleBaseModel(models.Model):
         return instance, created
 
 
-class Product(PaddleBaseModel):
+class Product(PaddleBaseModel, OrderedModel):
     id = models.CharField(max_length=50, primary_key=True)
     data = models.JSONField(null=True, blank=True, encoder=PrettyJSONEncoder)
     custom_data = models.JSONField(null=True, blank=True, encoder=PrettyJSONEncoder)
     name = models.CharField(max_length=255)
     status = models.CharField(max_length=10, choices=[("active", "Active"), ("archived", "Archived")])
+    description = models.TextField(blank=True)
+    default = models.BooleanField(default=False, db_index=True)
+    available = models.BooleanField(default=False, db_index=True)
+    visible = models.BooleanField(default=True, db_index=True)
 
-    class Meta:
+    class Meta(OrderedModel.Meta):
         pass
 
     def __str__(self) -> str:

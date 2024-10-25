@@ -3,6 +3,8 @@ import typing
 from django.conf import settings
 from django.contrib import admin
 from django.db import models
+from django.forms import ModelForm
+from django_jsonform.widgets import JSONFormWidget
 
 from django_paddle_billing import settings as app_settings
 from django_paddle_billing.models import (
@@ -15,6 +17,13 @@ from django_paddle_billing.models import (
     Subscription,
     Transaction,
 )
+import json
+from pathlib import Path
+
+# Load the schema from the JSON file
+SCHEMA_PATH = Path(__file__).parent / "schema.json"
+with open(SCHEMA_PATH) as f:
+    QUOTA_SCHEMA = json.load(f)
 
 # Check if unfold is in installed apps
 if "unfold" in settings.INSTALLED_APPS:
@@ -128,6 +137,14 @@ class BusinessAdmin(ModelAdmin):
         return ""
 
 
+class CustomDataForm(ModelForm):
+    class Meta:
+        model = Product
+        fields = '__all__'
+        widgets = {
+            'custom_data': JSONFormWidget(schema=QUOTA_SCHEMA)
+        }
+
 @admin.register(Product)
 class ProductAdmin(ModelAdmin):
     list_display = [
@@ -140,6 +157,7 @@ class ProductAdmin(ModelAdmin):
     formfield_overrides: typing.ClassVar = {
         models.JSONField: {"widget": app_settings.ADMIN_JSON_EDITOR_WIDGET},
     }
+    form = CustomDataForm
 
     def has_change_permission(self, request, obj=None):
         return not app_settings.ADMIN_READONLY

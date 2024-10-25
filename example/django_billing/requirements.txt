@@ -1,4 +1,6 @@
-paddle-billing-client==0.2.4
 django-ninja==1.1.0
+django-unfold==0.40.0
+#django-jsonform==2.23.1
+-e git+https://github.com/thecodinghouse/django-jsonform.git@v1.0.1-beta#egg=django-jsonform
 # django-paddle-billing
 -e ../../

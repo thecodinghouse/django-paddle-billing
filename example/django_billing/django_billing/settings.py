@@ -31,6 +31,11 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "unfold",  # before django.contrib.admin
+    "unfold.contrib.filters",  # optional, if special filters are needed
+    "unfold.contrib.forms",  # optional, if special form elements are needed
+    "unfold.contrib.inlines",  # optional, if special inlines are needed
+    "unfold.contrib.simple_history", 
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -40,6 +45,7 @@ INSTALLED_APPS = [
     "django_paddle_billing",
     "billing",
     "django_json_widget",
+    'django_jsonform',
     "ninja",
 ]
 
@@ -128,7 +134,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Paddle settings
 PADDLE_BILLING = {
-    "PADDLE_API_TOKEN": "",
+    "PADDLE_API_TOKEN": "fd5addb499250bb6530ab14928588396d4ab49ff6966b13628",
     "PADDLE_CLIENT_TOKEN": "",
     "PADDLE_SECRET_KEY": "",
     "PADDLE_API_URL": "https://sandbox-api.paddle.com",
@@ -143,5 +149,5 @@ PADDLE_BILLING = {
     ],
     "PADDLE_SANDBOX": True,
     "PADDLE_ACCOUNT_MODEL": "billing.Account",
-    "ADMIN_READONLY": True,
+    "ADMIN_READONLY": False,
 }

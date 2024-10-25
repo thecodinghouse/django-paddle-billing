@@ -42,3 +42,4 @@ typing-extensions==4.12.1
     #   pydantic-core
 urllib3==2.2.2
     # via requests
+django-ordered-model==3.7.4
