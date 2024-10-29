@@ -105,7 +105,7 @@ class Migration(migrations.Migration):
                 ('data', models.JSONField(blank=True, encoder=django_paddle_billing.encoders.PrettyJSONEncoder, null=True)),
                 ('next_billed_at', models.DateTimeField(blank=True, null=True)),
                 ('status', models.CharField(choices=[('active', 'Active'), ('canceled', 'Canceled'), ('past_due', 'Past Due'), ('paused', 'Paused'), ('trialing', 'Trialing')], max_length=10)),
-                ('account', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='subscriptions', to='billing.account')),
+                ('account', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='subscriptions', to=app_settings.PADDLE_ACCOUNT_MODEL)),
                 ('address', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='subscriptions', to='django_paddle_billing.address')),
                 ('business', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='subscriptions', to='django_paddle_billing.business')),
                 ('customer', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='subscriptions', to='django_paddle_billing.customer')),
