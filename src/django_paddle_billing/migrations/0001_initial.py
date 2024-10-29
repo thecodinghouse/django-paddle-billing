@@ -4,15 +4,15 @@ import django.db.models.deletion
 import django_paddle_billing.encoders
 from django.conf import settings
 from django.db import migrations, models
-
+from django_paddle_billing import settings as app_settings
 
 class Migration(migrations.Migration):
 
     initial = True
 
     dependencies = [
-        ('billing', '0001_initial'),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
+        migrations.swappable_dependency(app_settings.PADDLE_ACCOUNT_MODEL),
     ]
 
     operations = [
