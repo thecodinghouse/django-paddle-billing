@@ -159,3 +159,4 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 example/django_billing/django_billing/settings_local.py
+.python-version
