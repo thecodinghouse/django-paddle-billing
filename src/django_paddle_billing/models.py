@@ -81,9 +81,9 @@ class PaddleBaseModel(models.Model):
 class Product(PaddleBaseModel, OrderedModel):
     id = models.CharField(max_length=50, primary_key=True)
     data = models.JSONField(null=True, blank=True, encoder=PrettyJSONEncoder)
-    custom_data = models.JSONField(null=True, blank=True, encoder=PrettyJSONEncoder)
     name = models.CharField(max_length=255)
     status = models.CharField(max_length=10, choices=[("active", "Active"), ("archived", "Archived")])
+    quotas = models.JSONField(null=True, blank=True, encoder=PrettyJSONEncoder)
     description = models.TextField(blank=True)
     default = models.BooleanField(default=False, db_index=True)
     available = models.BooleanField(default=False, db_index=True)
@@ -116,8 +116,7 @@ class Product(PaddleBaseModel, OrderedModel):
                 defaults={
                     "name": data.name,
                     "status": data.status,
-                    "data": data.dict(),
-                    "custom_data": data.custom_data,
+                    "data": data.dict()
                 },
                 occurred_at=occurred_at,
             )
@@ -147,7 +146,6 @@ class Product(PaddleBaseModel, OrderedModel):
 class Price(PaddleBaseModel):
     id = models.CharField(max_length=50, primary_key=True)
     data = models.JSONField(null=True, blank=True, encoder=PrettyJSONEncoder)
-    custom_data = models.JSONField(null=True, blank=True, encoder=PrettyJSONEncoder)
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="prices")
 
     class Meta:
@@ -176,8 +174,7 @@ class Price(PaddleBaseModel):
                 query={"pk": data.id},
                 defaults={
                     "product_id": data.product_id,
-                    "data": data.dict(),
-                    "custom_data": data.custom_data,
+                    "data": data.dict()
                 },
                 occurred_at=occurred_at,
             )
@@ -207,7 +204,6 @@ class Price(PaddleBaseModel):
 class Discount(PaddleBaseModel):
     id = models.CharField(max_length=50, primary_key=True)
     data = models.JSONField(null=True, blank=True, encoder=PrettyJSONEncoder)
-    custom_data = models.JSONField(null=True, blank=True, encoder=PrettyJSONEncoder)
 
     class Meta:
         pass
@@ -234,8 +230,7 @@ class Discount(PaddleBaseModel):
             _discount, created = cls.update_or_create(
                 query={"pk": data.id},
                 defaults={
-                    "data": data.dict(),
-                    "custom_data": data.custom_data,
+                    "data": data.dict()
                 },
                 occurred_at=occurred_at,
             )
@@ -265,7 +260,6 @@ class Discount(PaddleBaseModel):
 class Customer(PaddleBaseModel):
     id = models.CharField(max_length=50, primary_key=True)
     data = models.JSONField(null=True, blank=True, encoder=PrettyJSONEncoder)
-    custom_data = models.JSONField(null=True, blank=True, encoder=PrettyJSONEncoder)
     name = models.CharField(max_length=255, null=True, blank=True)
     email = models.EmailField()
     user = models.ForeignKey(
@@ -300,8 +294,7 @@ class Customer(PaddleBaseModel):
             defaults = {
                 "name": data.name,
                 "email": data.email,
-                "data": data.dict(),
-                "custom_data": data.custom_data,
+                "data": data.dict()
             }
             user = UserModel.objects.filter(email=data.email).first()
             if user is not None:
@@ -373,7 +366,6 @@ class Address(PaddleBaseModel):
     id = models.CharField(max_length=50, primary_key=True)
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name="addresses", null=True, blank=True)
     data = models.JSONField(null=True, blank=True, encoder=PrettyJSONEncoder)
-    custom_data = models.JSONField(null=True, blank=True, encoder=PrettyJSONEncoder)
     country_code = models.CharField(max_length=2)
 
     class Meta:
@@ -406,7 +398,6 @@ class Address(PaddleBaseModel):
         try:
             defaults = {
                 "data": data.dict(),
-                "custom_data": data.custom_data,
                 "country_code": data.country_code,
             }
             if customer_id is not None:
@@ -436,7 +427,6 @@ class Business(PaddleBaseModel):
     id = models.CharField(max_length=50, primary_key=True)
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name="businesses", null=True, blank=True)
     data = models.JSONField(null=True, blank=True, encoder=PrettyJSONEncoder)
-    custom_data = models.JSONField(null=True, blank=True, encoder=PrettyJSONEncoder)
 
     class Meta:
         pass
@@ -465,8 +455,7 @@ class Business(PaddleBaseModel):
     def from_paddle_data(cls, data, customer_id, occurred_at=None) -> tuple["Business | None", bool, Exception | None]:
         try:
             defaults = {
-                "data": data.dict(),
-                "custom_data": data.custom_data,
+                "data": data.dict()
             }
             if customer_id is not None:
                 defaults["customer_id"] = customer_id
@@ -492,7 +481,6 @@ class Business(PaddleBaseModel):
 class Subscription(PaddleBaseModel):
     id = models.CharField(max_length=50, primary_key=True)
     data = models.JSONField(null=True, blank=True, encoder=PrettyJSONEncoder)
-    custom_data = models.JSONField(null=True, blank=True, encoder=PrettyJSONEncoder)
     next_billed_at = models.DateTimeField(null=True, blank=True)
     account = models.ForeignKey(
         to=get_account_model(),
@@ -564,8 +552,7 @@ class Subscription(PaddleBaseModel):
                 "business_id": data.business_id,
                 "status": data.status,
                 "next_billed_at": data.next_billed_at,
-                "data": data.dict(),
-                "custom_data": data.custom_data,
+                "data": data.dict()
             }
             if account_id is not None:
                 defaults["account_id"] = account_id
@@ -602,7 +589,6 @@ class Subscription(PaddleBaseModel):
 class Transaction(PaddleBaseModel):
     id = models.CharField(max_length=50, primary_key=True)
     data = models.JSONField(null=True, blank=True, encoder=PrettyJSONEncoder)
-    custom_data = models.JSONField(null=True, blank=True, encoder=PrettyJSONEncoder)
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name="transactions")
     subscription = models.ForeignKey(
         Subscription, on_delete=models.CASCADE, related_name="transactions", null=True, blank=True
@@ -635,8 +621,7 @@ class Transaction(PaddleBaseModel):
                 defaults={
                     "customer_id": data.customer_id,
                     "subscription_id": data.subscription_id,
-                    "data": data.dict(),
-                    "custom_data": data.custom_data,
+                    "data": data.dict()
                 },
                 occurred_at=occurred_at,
             )

@@ -1,4 +1,4 @@
 django-ninja==1.1.0
 django-unfold==0.40.0
-# django-paddle-billing
+#-e git+https://github.com/thecodinghouse/django-paddle-billing.git@v1.0.2#egg=django-paddle-billing
 -e ../../
