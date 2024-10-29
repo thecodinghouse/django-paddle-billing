@@ -14,17 +14,17 @@
                                 "type": "object",
                                 "title": "Remove watermark",
                                 "keys": {
-                                  "CAN_CHANGE_WATERMARK": {
-                                    "$ref": "#/$defs/dummy_input"
-                                  },
-                                  "code": {
-                                    "type": "string",
-                                    "default": "CAN_CHANGE_WATERMARK",
-                                    "widget": "hidden"
-                                  },
-                                  "value": {
-                                    "$ref": "#/$defs/radio_input"
-                                  }
+                                    "CAN_CHANGE_WATERMARK": {
+                                        "$ref": "#/$defs/dummy_input"
+                                    },
+                                    "code": {
+                                        "type": "string",
+                                        "default": "CAN_CHANGE_WATERMARK",
+                                        "widget": "hidden"
+                                    },
+                                    "value": {
+                                        "$ref": "#/$defs/radio_input"
+                                    }
                                 }
                             },
                             {
@@ -100,7 +100,7 @@
                             },
                             {
                                 "type": "object",
-                                "title": "Video Quality Supported",
+                                "title": "Video quality supported",
                                 "keys": {
                                     "VIDEO_QUALITY": {
                                         "$ref": "#/$defs/dummy_input"
@@ -171,14 +171,14 @@
                             },
                             {
                                 "type": "object",
-                                "title": "Video quality supported",
+                                "title": "Video dimension supported",
                                 "keys": {
-                                    "VIDEO_QUALITY": {
+                                    "VIDEO_ORIENTATION": {
                                         "$ref": "#/$defs/dummy_input"
                                     },
                                     "code": {
                                         "type": "string",
-                                        "default": "VIDEO_QUALITY",
+                                        "default": "VIDEO_ORIENTATION",
                                         "widget": "hidden"
                                     },
                                     "value": {
@@ -307,8 +307,25 @@
                                         "widget": "hidden"
                                     },
                                     "value": {
-                                        "$ref": "#/$defs/number_input",
-                                        "helpText": "Please provide value in minutes"
+                                        "type": "array",
+                                        "title": "All price variant",
+                                        "items": {
+                                            "type": "object",
+                                            "keys": {
+                                                "value": {
+                                                    "$ref": "#/$defs/number_input",
+                                                    "helpText": "Please provide value in minutes"
+                                                },
+                                                "amount": {
+                                                    "type": "number",
+                                                    "helpText": "Amount to charge"
+                                                },
+                                                "price_id": {
+                                                    "type": "string",
+                                                    "helpText": "Price id created on paddle"
+                                                }
+                                            }
+                                        }
                                     }
                                 }
                             },

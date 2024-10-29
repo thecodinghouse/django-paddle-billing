@@ -493,6 +493,7 @@ class Subscription(PaddleBaseModel):
     id = models.CharField(max_length=50, primary_key=True)
     data = models.JSONField(null=True, blank=True, encoder=PrettyJSONEncoder)
     custom_data = models.JSONField(null=True, blank=True, encoder=PrettyJSONEncoder)
+    next_billed_at = models.DateTimeField(null=True, blank=True)
     account = models.ForeignKey(
         to=get_account_model(),
         null=True,
@@ -562,6 +563,7 @@ class Subscription(PaddleBaseModel):
                 "address_id": data.address_id,
                 "business_id": data.business_id,
                 "status": data.status,
+                "next_billed_at": data.next_billed_at,
                 "data": data.dict(),
                 "custom_data": data.custom_data,
             }
