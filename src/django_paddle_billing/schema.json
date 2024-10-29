@@ -1,398 +1,391 @@
 {
-    "type": "object",
-    "keys": {
-        "quotas": {
-            "type": "array",
-            "title": "Add Quota",
-            "description": "A product from Recasts catalogue",
-            "items": {
-                "type": "object",
-                "keys": {
-                    "quota": {
-                        "oneOf": [
-                            {
-                                "type": "object",
-                                "title": "Remove watermark",
-                                "keys": {
-                                    "CAN_CHANGE_WATERMARK": {
-                                        "$ref": "#/$defs/dummy_input"
-                                    },
-                                    "code": {
-                                        "type": "string",
-                                        "default": "CAN_CHANGE_WATERMARK",
-                                        "widget": "hidden"
-                                    },
-                                    "value": {
-                                        "$ref": "#/$defs/radio_input"
-                                    }
-                                }
+    "type": "array",
+    "items": {
+        "type": "object",
+        "keys": {
+            "quota": {
+                "oneOf": [
+                    {
+                        "type": "object",
+                        "title": "Remove watermark",
+                        "keys": {
+                            "CAN_CHANGE_WATERMARK": {
+                                "$ref": "#/$defs/dummy_input"
                             },
-                            {
-                                "type": "object",
-                                "title": "Enable Reti",
-                                "keys": {
-                                    "AUTO_CHAPTER": {
-                                        "$ref": "#/$defs/dummy_input"
-                                    },
-                                    "code": {
-                                        "type": "string",
-                                        "default": "AUTO_CHAPTER",
-                                        "widget": "hidden"
-                                    },
-                                    "value": {
-                                        "$ref": "#/$defs/radio_input"
-                                    }
-                                }
+                            "code": {
+                                "type": "string",
+                                "default": "CAN_CHANGE_WATERMARK",
+                                "widget": "hidden"
                             },
-                            {
-                                "type": "object",
-                                "title": "Video export limit",
-                                "keys": {
-                                    "VIDEO_EXPORT_COUNT": {
-                                        "$ref": "#/$defs/dummy_input"
-                                    },
-                                    "code": {
-                                        "type": "string",
-                                        "default": "VIDEO_EXPORT_COUNT",
-                                        "widget": "hidden"
-                                    },
-                                    "value": {
-                                        "$ref": "#/$defs/number_input",
-                                        "helpText": "Provide value in seconds"
-                                    }
-                                }
+                            "value": {
+                                "$ref": "#/$defs/radio_input"
+                            }
+                        }
+                    },
+                    {
+                        "type": "object",
+                        "title": "Enable Reti",
+                        "keys": {
+                            "AUTO_CHAPTER": {
+                                "$ref": "#/$defs/dummy_input"
                             },
-                            {
-                                "type": "object",
-                                "title": "Storage limit",
-                                "keys": {
-                                    "STORAGE": {
-                                        "$ref": "#/$defs/dummy_input"
-                                    },
-                                    "code": {
-                                        "type": "string",
-                                        "default": "STORAGE",
-                                        "widget": "hidden"
-                                    },
-                                    "value": {
-                                        "$ref": "#/$defs/number_input",
-                                        "helpText": "Provide value in GB"
-                                    }
-                                }
+                            "code": {
+                                "type": "string",
+                                "default": "AUTO_CHAPTER",
+                                "widget": "hidden"
                             },
-                            {
-                                "type": "object",
-                                "title": "Project locking",
-                                "keys": {
-                                    "PROJECT_LOCK_PERIOD": {
-                                        "$ref": "#/$defs/dummy_input"
-                                    },
-                                    "code": {
-                                        "type": "string",
-                                        "default": "PROJECT_LOCK_PERIOD",
-                                        "widget": "hidden"
-                                    },
-                                    "value": {
-                                        "$ref": "#/$defs/number_input",
-                                        "helpText": "Provide value in days"
-                                    }
-                                }
+                            "value": {
+                                "$ref": "#/$defs/radio_input"
+                            }
+                        }
+                    },
+                    {
+                        "type": "object",
+                        "title": "Video export limit",
+                        "keys": {
+                            "VIDEO_EXPORT_COUNT": {
+                                "$ref": "#/$defs/dummy_input"
                             },
-                            {
-                                "type": "object",
-                                "title": "Video quality supported",
-                                "keys": {
-                                    "VIDEO_QUALITY": {
-                                        "$ref": "#/$defs/dummy_input"
-                                    },
-                                    "code": {
-                                        "type": "string",
-                                        "default": "VIDEO_QUALITY",
-                                        "widget": "hidden"
-                                    },
-                                    "value": {
-                                        "type": "array",
-                                        "title": "Resolutions",
-                                        "items": {
+                            "code": {
+                                "type": "string",
+                                "default": "VIDEO_EXPORT_COUNT",
+                                "widget": "hidden"
+                            },
+                            "value": {
+                                "$ref": "#/$defs/number_input",
+                                "helpText": "Provide value in seconds"
+                            }
+                        }
+                    },
+                    {
+                        "type": "object",
+                        "title": "Storage limit",
+                        "keys": {
+                            "STORAGE": {
+                                "$ref": "#/$defs/dummy_input"
+                            },
+                            "code": {
+                                "type": "string",
+                                "default": "STORAGE",
+                                "widget": "hidden"
+                            },
+                            "value": {
+                                "$ref": "#/$defs/number_input",
+                                "helpText": "Provide value in GB"
+                            }
+                        }
+                    },
+                    {
+                        "type": "object",
+                        "title": "Project locking",
+                        "keys": {
+                            "PROJECT_LOCK_PERIOD": {
+                                "$ref": "#/$defs/dummy_input"
+                            },
+                            "code": {
+                                "type": "string",
+                                "default": "PROJECT_LOCK_PERIOD",
+                                "widget": "hidden"
+                            },
+                            "value": {
+                                "$ref": "#/$defs/number_input",
+                                "helpText": "Provide value in days"
+                            }
+                        }
+                    },
+                    {
+                        "type": "object",
+                        "title": "Video quality supported",
+                        "keys": {
+                            "VIDEO_QUALITY": {
+                                "$ref": "#/$defs/dummy_input"
+                            },
+                            "code": {
+                                "type": "string",
+                                "default": "VIDEO_QUALITY",
+                                "widget": "hidden"
+                            },
+                            "value": {
+                                "type": "array",
+                                "title": "Resolutions",
+                                "items": {
+                                    "type": "string",
+                                    "choices": [
+                                        {
+                                            "title": "SD (480p)",
+                                            "value": "sd"
+                                        },
+                                        {
+                                            "title": "HD (720p)",
+                                            "value": "hd"
+                                        },
+                                        {
+                                            "title": "FHD (1080p)",
+                                            "value": "fhd"
+                                        }
+                                    ],
+                                    "widget": "multiselect"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "type": "object",
+                        "title": "Max single clip export length",
+                        "keys": {
+                            "VIDEO_LENGTH": {
+                                "$ref": "#/$defs/dummy_input"
+                            },
+                            "code": {
+                                "type": "string",
+                                "default": "VIDEO_LENGTH",
+                                "widget": "hidden"
+                            },
+                            "value": {
+                                "$ref": "#/$defs/number_input",
+                                "helpText": "Provide value in seconds"
+                            }
+                        }
+                    },
+                    {
+                        "type": "object",
+                        "title": "Upload your font",
+                        "keys": {
+                            "CUSTOM_FONT": {
+                                "$ref": "#/$defs/dummy_input"
+                            },
+                            "code": {
+                                "type": "string",
+                                "default": "CUSTOM_FONT",
+                                "widget": "hidden"
+                            },
+                            "value": {
+                                "$ref": "#/$defs/radio_input"
+                            }
+                        }
+                    },
+                    {
+                        "type": "object",
+                        "title": "Video dimension supported",
+                        "keys": {
+                            "VIDEO_ORIENTATION": {
+                                "$ref": "#/$defs/dummy_input"
+                            },
+                            "code": {
+                                "type": "string",
+                                "default": "VIDEO_ORIENTATION",
+                                "widget": "hidden"
+                            },
+                            "value": {
+                                "type": "array",
+                                "title": "Dimensions",
+                                "items": {
+                                    "type": "string",
+                                    "choices": [
+                                        {
+                                            "title": "Vertical (9:16)",
+                                            "value": "VERTICAL916"
+                                        },
+                                        {
+                                            "title": "Square (1:1)",
+                                            "value": "SQUARE"
+                                        },
+                                        {
+                                            "title": "Wide (16:9)",
+                                            "value": "LANDSCAPE169"
+                                        }
+                                    ],
+                                    "widget": "multiselect"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "type": "object",
+                        "title": "Workspaces",
+                        "keys": {
+                            "CAN_ADD_TEAM": {
+                                "$ref": "#/$defs/dummy_input"
+                            },
+                            "code": {
+                                "type": "string",
+                                "default": "CAN_ADD_TEAM",
+                                "widget": "hidden"
+                            },
+                            "value": {
+                                "$ref": "#/$defs/number_input",
+                                "helpText": "Number of workspaces user can add"
+                            }
+                        }
+                    },
+                    {
+                        "type": "object",
+                        "title": "Team members",
+                        "keys": {
+                            "CAN_ADD_TEAM_MEMBERS": {
+                                "$ref": "#/$defs/dummy_input"
+                            },
+                            "code": {
+                                "type": "string",
+                                "default": "CAN_ADD_TEAM_MEMBERS",
+                                "widget": "hidden"
+                            },
+                            "value": {
+                                "$ref": "#/$defs/number_input",
+                                "helpText": "Number of team members user can add"
+                            }
+                        }
+                    },
+                    {
+                        "type": "object",
+                        "title": "Transcription",
+                        "keys": {
+                            "ADD_SUBTITLE": {
+                                "$ref": "#/$defs/dummy_input"
+                            },
+                            "code": {
+                                "type": "string",
+                                "default": "ADD_SUBTITLE",
+                                "widget": "hidden"
+                            },
+                            "value": {
+                                "$ref": "#/$defs/radio_input"
+                            }
+                        }
+                    },
+                    {
+                        "type": "object",
+                        "title": "Upload file size limit",
+                        "keys": {
+                            "UPLOAD_SIZE": {
+                                "$ref": "#/$defs/dummy_input"
+                            },
+                            "code": {
+                                "type": "string",
+                                "default": "UPLOAD_SIZE",
+                                "widget": "hidden"
+                            },
+                            "value": {
+                                "$ref": "#/$defs/number_input",
+                                "helpText": "provide value in MB"
+                            }
+                        }
+                    },
+                    {
+                        "type": "object",
+                        "title": "Files upload limit",
+                        "keys": {
+                            "UPLOAD_COUNT": {
+                                "$ref": "#/$defs/dummy_input"
+                            },
+                            "code": {
+                                "type": "string",
+                                "default": "UPLOAD_COUNT",
+                                "widget": "hidden"
+                            },
+                            "value": {
+                                "$ref": "#/$defs/number_input",
+                                "helpText": "Number of files user can upload"
+                            }
+                        }
+                    },
+                    {
+                        "type": "object",
+                        "title": "Upload minutes limit",
+                        "keys": {
+                            "UPLOAD_DURATION": {
+                                "$ref": "#/$defs/dummy_input"
+                            },
+                            "code": {
+                                "type": "string",
+                                "default": "UPLOAD_DURATION",
+                                "widget": "hidden"
+                            },
+                            "value": {
+                                "type": "array",
+                                "title": "All price variant",
+                                "items": {
+                                    "type": "object",
+                                    "keys": {
+                                        "value": {
+                                            "$ref": "#/$defs/number_input",
+                                            "helpText": "Please provide value in minutes"
+                                        },
+                                        "amount": {
+                                            "type": "number",
+                                            "helpText": "Amount to charge"
+                                        },
+                                        "price_id": {
                                             "type": "string",
-                                            "choices": [
-                                                {
-                                                    "title": "SD (480p)",
-                                                    "value": "sd"
-                                                },
-                                                {
-                                                    "title": "HD (720p)",
-                                                    "value": "hd"
-                                                },
-                                                {
-                                                    "title": "FHD (1080p)",
-                                                    "value": "fhd"
-                                                }
-                                            ],
-                                            "widget": "multiselect"
+                                            "helpText": "Price id created on paddle"
                                         }
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "title": "Max single clip export length",
-                                "keys": {
-                                    "VIDEO_LENGTH": {
-                                        "$ref": "#/$defs/dummy_input"
-                                    },
-                                    "code": {
-                                        "type": "string",
-                                        "default": "VIDEO_LENGTH",
-                                        "widget": "hidden"
-                                    },
-                                    "value": {
-                                        "$ref": "#/$defs/number_input",
-                                        "helpText": "Provide value in seconds"
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "title": "Upload your font",
-                                "keys": {
-                                    "CUSTOM_FONT": {
-                                        "$ref": "#/$defs/dummy_input"
-                                    },
-                                    "code": {
-                                        "type": "string",
-                                        "default": "CUSTOM_FONT",
-                                        "widget": "hidden"
-                                    },
-                                    "value": {
-                                        "$ref": "#/$defs/radio_input"
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "title": "Video dimension supported",
-                                "keys": {
-                                    "VIDEO_ORIENTATION": {
-                                        "$ref": "#/$defs/dummy_input"
-                                    },
-                                    "code": {
-                                        "type": "string",
-                                        "default": "VIDEO_ORIENTATION",
-                                        "widget": "hidden"
-                                    },
-                                    "value": {
-                                        "type": "array",
-                                        "title": "Dimensions",
-                                        "items": {
-                                            "type": "string",
-                                            "choices": [
-                                                {
-                                                    "title": "Vertical (9:16)",
-                                                    "value": "VERTICAL916"
-                                                },
-                                                {
-                                                    "title": "Square (1:1)",
-                                                    "value": "SQUARE"
-                                                },
-                                                {
-                                                    "title": "Wide (16:9)",
-                                                    "value": "LANDSCAPE169"
-                                                }
-                                            ],
-                                            "widget": "multiselect"
-                                        }
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "title": "Workspaces",
-                                "keys": {
-                                    "CAN_ADD_TEAM": {
-                                        "$ref": "#/$defs/dummy_input"
-                                    },
-                                    "code": {
-                                        "type": "string",
-                                        "default": "CAN_ADD_TEAM",
-                                        "widget": "hidden"
-                                    },
-                                    "value": {
-                                        "$ref": "#/$defs/number_input",
-                                        "helpText": "Number of workspaces user can add"
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "title": "Team members",
-                                "keys": {
-                                    "CAN_ADD_TEAM_MEMBERS": {
-                                        "$ref": "#/$defs/dummy_input"
-                                    },
-                                    "code": {
-                                        "type": "string",
-                                        "default": "CAN_ADD_TEAM_MEMBERS",
-                                        "widget": "hidden"
-                                    },
-                                    "value": {
-                                        "$ref": "#/$defs/number_input",
-                                        "helpText": "Number of team members user can add"
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "title": "Transcription",
-                                "keys": {
-                                    "ADD_SUBTITLE": {
-                                        "$ref": "#/$defs/dummy_input"
-                                    },
-                                    "code": {
-                                        "type": "string",
-                                        "default": "ADD_SUBTITLE",
-                                        "widget": "hidden"
-                                    },
-                                    "value": {
-                                        "$ref": "#/$defs/radio_input"
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "title": "Upload file size limit",
-                                "keys": {
-                                    "UPLOAD_SIZE": {
-                                        "$ref": "#/$defs/dummy_input"
-                                    },
-                                    "code": {
-                                        "type": "string",
-                                        "default": "UPLOAD_SIZE",
-                                        "widget": "hidden"
-                                    },
-                                    "value": {
-                                        "$ref": "#/$defs/number_input",
-                                        "helpText": "provide value in MB"
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "title": "Files upload limit",
-                                "keys": {
-                                    "UPLOAD_COUNT": {
-                                        "$ref": "#/$defs/dummy_input"
-                                    },
-                                    "code": {
-                                        "type": "string",
-                                        "default": "UPLOAD_COUNT",
-                                        "widget": "hidden"
-                                    },
-                                    "value": {
-                                        "$ref": "#/$defs/number_input",
-                                        "helpText": "Number of files user can upload"
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "title": "Upload minutes limit",
-                                "keys": {
-                                    "UPLOAD_DURATION": {
-                                        "$ref": "#/$defs/dummy_input"
-                                    },
-                                    "code": {
-                                        "type": "string",
-                                        "default": "UPLOAD_DURATION",
-                                        "widget": "hidden"
-                                    },
-                                    "value": {
-                                        "type": "array",
-                                        "title": "All price variant",
-                                        "items": {
-                                            "type": "object",
-                                            "keys": {
-                                                "value": {
-                                                    "$ref": "#/$defs/number_input",
-                                                    "helpText": "Please provide value in minutes"
-                                                },
-                                                "amount": {
-                                                    "type": "number",
-                                                    "helpText": "Amount to charge"
-                                                },
-                                                "price_id": {
-                                                    "type": "string",
-                                                    "helpText": "Price id created on paddle"
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "title": "Activate AI on project",
-                                "keys": {
-                                    "ACTIVATE_AI": {
-                                        "$ref": "#/$defs/dummy_input"
-                                    },
-                                    "code": {
-                                        "type": "string",
-                                        "default": "ACTIVATE_AI",
-                                        "widget": "hidden"
-                                    },
-                                    "value": {
-                                        "$ref": "#/$defs/number_input",
-                                        "helpText": "Number of project to use AI actions"
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "title": "Text to speech",
-                                "keys": {
-                                    "GENERATE_PODCAST": {
-                                        "$ref": "#/$defs/dummy_input"
-                                    },
-                                    "code": {
-                                        "type": "string",
-                                        "default": "GENERATE_PODCAST",
-                                        "widget": "hidden"
-                                    },
-                                    "value": {
-                                        "$ref": "#/$defs/number_input",
-                                        "helpText": "Please provide value in characters"
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "title": "Voice clones",
-                                "keys": {
-                                    "CLONE_VOICE": {
-                                        "$ref": "#/$defs/dummy_input"
-                                    },
-                                    "code": {
-                                        "type": "string",
-                                        "default": "CLONE_VOICE",
-                                        "widget": "hidden"
-                                    },
-                                    "value": {
-                                        "$ref": "#/$defs/number_input",
-                                        "helpText": "Number of voice clones"
                                     }
                                 }
                             }
-                        ]
+                        }
                     },
-                    "display": {
-                        "type": "string",
-                        "required": true
+                    {
+                        "type": "object",
+                        "title": "Activate AI on project",
+                        "keys": {
+                            "ACTIVATE_AI": {
+                                "$ref": "#/$defs/dummy_input"
+                            },
+                            "code": {
+                                "type": "string",
+                                "default": "ACTIVATE_AI",
+                                "widget": "hidden"
+                            },
+                            "value": {
+                                "$ref": "#/$defs/number_input",
+                                "helpText": "Number of project to use AI actions"
+                            }
+                        }
                     },
-                    "show": {
-                        "type": "boolean"
+                    {
+                        "type": "object",
+                        "title": "Text to speech",
+                        "keys": {
+                            "GENERATE_PODCAST": {
+                                "$ref": "#/$defs/dummy_input"
+                            },
+                            "code": {
+                                "type": "string",
+                                "default": "GENERATE_PODCAST",
+                                "widget": "hidden"
+                            },
+                            "value": {
+                                "$ref": "#/$defs/number_input",
+                                "helpText": "Please provide value in characters"
+                            }
+                        }
+                    },
+                    {
+                        "type": "object",
+                        "title": "Voice clones",
+                        "keys": {
+                            "CLONE_VOICE": {
+                                "$ref": "#/$defs/dummy_input"
+                            },
+                            "code": {
+                                "type": "string",
+                                "default": "CLONE_VOICE",
+                                "widget": "hidden"
+                            },
+                            "value": {
+                                "$ref": "#/$defs/number_input",
+                                "helpText": "Number of voice clones"
+                            }
+                        }
                     }
-                }
+                ]
+            },
+            "display": {
+                "type": "string",
+                "required": true
+            },
+            "show": {
+                "type": "boolean"
             }
         }
     },

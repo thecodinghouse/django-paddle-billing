@@ -137,12 +137,12 @@ class BusinessAdmin(ModelAdmin):
         return ""
 
 
-class CustomDataForm(ModelForm):
+class AddQuotaForm(ModelForm):
     class Meta:
         model = Product
         fields = '__all__'
         widgets = {
-            'custom_data': JSONFormWidget(schema=QUOTA_SCHEMA)
+            'quotas': JSONFormWidget(schema=QUOTA_SCHEMA)
         }
 
 @admin.register(Product)
@@ -157,7 +157,7 @@ class ProductAdmin(ModelAdmin):
     formfield_overrides: typing.ClassVar = {
         models.JSONField: {"widget": app_settings.ADMIN_JSON_EDITOR_WIDGET},
     }
-    form = CustomDataForm
+    form = AddQuotaForm
 
     def has_change_permission(self, request, obj=None):
         return not app_settings.ADMIN_READONLY
