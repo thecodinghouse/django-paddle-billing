@@ -22,6 +22,7 @@ CONFIG_DEFAULTS = {
     "ADMIN_JSON_EDITOR_WIDGET": JSONEditorWidget,
 }
 
+settings.INSTALLED_APPS += ["django_json_widget", "django_jsonform"]
 
 def get_config(settings_name=None):
     if settings_name is None:

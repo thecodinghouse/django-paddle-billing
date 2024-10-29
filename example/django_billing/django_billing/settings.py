@@ -44,8 +44,6 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django_paddle_billing",
     "billing",
-    "django_json_widget",
-    'django_jsonform',
     "ninja",
 ]
 
