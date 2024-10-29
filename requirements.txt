@@ -43,4 +43,5 @@ typing-extensions==4.12.1
 urllib3==2.2.2
     # via requests
 django-ordered-model==3.7.4
+
 -e git+https://github.com/thecodinghouse/django-jsonform.git@v1.0.1-beta#egg=django-jsonform

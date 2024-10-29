@@ -26,7 +26,8 @@ dependencies = [
   "django>=4.2",
   "paddle_billing_client>=0.2.15",
   "django_json_widget",
-  "django_jsonform"
+  "django-ordered-model>=3.7.4",
+  "django-jsonform @ git+https://github.com/thecodinghouse/django-jsonform.git@v1.0.1-beta#egg=django-jsonform"
 ]
 
 [project.optional-dependencies]
